@@ -1,0 +1,9 @@
+{% if grammar_list %}
+    <ul>
+    {% for grammar in grammar_list %}
+        <li><a href="/grammar/{{ grammar.id }}/">{{ grammar.nick }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No grammars are available.</p>
+{% endif %}

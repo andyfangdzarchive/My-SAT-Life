@@ -13,6 +13,11 @@ def index(request):
     context = {'grammar_list': grammar_list}
     return render(request, 'grammar/index.html', context)
 
+def list(request):
+    grammar_list = Grammar.objects.all().order_by('-pub_date')
+    context = {'grammar_list': grammar_list}
+    return render(request, 'grammar/list.html', context)
+
 def detail(request, grammar_id):
     grammar_sel = get_object_or_404(Grammar, pk=grammar_id)
     choices = grammar_sel.choice_set.all()
