@@ -23,6 +23,8 @@ def detail(request, grammar_id):
       chara=chr(ord(chara) + 1)
     clist=collections.OrderedDict(sorted(clist.items()))
     next = Grammar.objects.order_by('?')[0]
+    while next == grammar_sel:
+      next = Grammar.objects.order_by('?')[0]
     context = {
     'grammar': grammar_sel,
     'choices': clist,
