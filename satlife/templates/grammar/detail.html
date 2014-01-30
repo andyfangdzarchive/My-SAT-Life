@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=370px, user-scalable=0" />
+<style type="text/css">
+  #question{
+    font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  }
+  .button{
+    font-weight:bold;
+  }
+  ol {
+    counter-reset: my-badass-counter;
+    padding: 0;
+    
+  }
+  ol li:before {
+
+      content:"(" counter(my-badass-counter, upper-alpha) ")";
+      counter-increment: my-badass-counter;
+      margin-right: 8px;
+  }
+  .prep{
+    display:none;
+  }
+  .display-label{
+    display: inline-block;
+    width: 30px;
+    padding-left: 5px;
+  }
+
+  #buttons {
+    
+  }
+  .cbstyle {
+    
+    width: 350px; /* change to your preferences */
+    word-wrap: break-word;
+
+  }
+  .cbchoice{
+    margin-left: 2em; text-indent: -2em;
+    word-wrap: break-word;
+    overflow: hidden
+  }
+  .display-field{
+    display: inline-block;
+    padding-left: 10px;
+    text-indent: -10px;
+    vertical-align: top;
+    width: 300px; /* for testing purposes only */
+  }
+
+  .spinner {
+    background-color: #333;
+
+    margin: 100px auto;
+    -webkit-animation: rotateplane 2s  ease-in-out;
+    animation: rotateplane 2s  ease-in-out;
+  }
+
+  @-webkit-keyframes rotateplane {
+    0% { -webkit-transform: perspective(120px) }
+    20% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    40% { -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg) }
+    60% { -webkit-transform: perspective(120px) rotateY(0deg)  rotateX(180deg) }
+    80% { -webkit-transform: perspective(120px) }
+    90% {-webkit-transform:  scale(0.01) }
+    100% {-webkit-transform:  scale(1) }
+  }
+  
+  @media (min-width: 768px) {
+    #main {
+      width: 500px ;
+      margin-left: auto ;
+      margin-right: auto ;
+    }
+  }
+
+    
+</style>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/hover.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/colors.css" %}">
+<script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+<script>
+  function choose(choice,id) {
+    console.log(id);
+    var tgt=$('#'+id);
+    
+    $.getJSON("/grammar/choose/", { pk:choice,}, function(json){
+      var result=json['answer'];
+      console.log(result);
+      tgt.addClass("spinner");
+      setTimeout(function() {
+        if(result)tgt.addClass('bg-green');
+        else tgt.addClass('bg-red');
+      }, 1800);
+    });
+    
+  }
+  $('#buttons').click(function(event) {
+    var tgt=$(event.target)
+    
+
+});
+</script>
+</head>
+{% if grammar %}
+<div id="main">
+<h4>{{ grammar.nick }}</h4>
+<p class="cbstyle">{{ grammar.question_1st }}<span style="text-decoration: underline;">{{ first.choice_text }}</span>{{ grammar.question_2nd }}</p>
+<div id="choices">
+  {% for label,choice in choices.items %}
+  <div class="display-element" class="choice">
+    <span class="display-label">({{ label }})</span>
+    <span class="display-field">{{ choice.choice_text }}</span>
+  </div>
+  {% endfor %}
+</div>
+<div id="buttons">
+{% for label,choice in choices.items %}<a href="#" id="choice-{{ label }}" class="button border-fade" onClick="choose({{ choice.pk }},'choice-'+'{{ label }}');">({{ label }})</a>{% endfor %}
+</div>
+{% if next %}
+<div id="next">
+  <a href="/grammar/{{ next.pk }}/" class="button border-fade pulse">Hit me!</a>
+</div>
+{% endif %}
+{% endif %}
