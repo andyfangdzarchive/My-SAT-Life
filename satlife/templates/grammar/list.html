@@ -1,9 +1,22 @@
+<html>
+<head>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=370px, user-scalable=0" />
+  {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/hover.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/colors.css" %}">
+<script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+</head>
+<body>
 {% if grammar_list %}
-    <ul>
+  <h2 style='font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;'> Here's a list of all grammar questions avaliable:</h2>
     {% for grammar in grammar_list %}
-        <li><a href="/grammar/{{ grammar.id }}/">{{ grammar.nick }}</a></li>
+
+        <a style='font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;' href="/grammar/{{ grammar.id }}/" class="button border-fade"><i class="fa fa-stack-exchange"></i> {{ grammar.nick }}</a>
+        <br/>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No grammars are available.</p>
 {% endif %}
+</body>
