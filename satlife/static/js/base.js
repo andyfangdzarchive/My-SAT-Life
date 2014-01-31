@@ -152,7 +152,7 @@ function viewList(isHistoryAccess)
         document.title = "List"+" - Grammar";
         if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/");
         NProgress.set(0.3);
-      },250);
+      },200);
       setTimeout(function() {
         NProgress.set(0.7);
       },400);
