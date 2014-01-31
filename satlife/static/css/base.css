@@ -51,7 +51,7 @@ ol li:before {
 ::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#999;-webkit-border-radius:8px;}
 
 #operations {
-
+  z-index: 100;
   min-width: 370px;
   position: fixed;
   bottom:0px;
