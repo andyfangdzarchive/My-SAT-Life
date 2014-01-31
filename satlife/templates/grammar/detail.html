@@ -68,6 +68,15 @@
     90% {-webkit-transform:  scale(0.01) }
     100% {-webkit-transform:  scale(1) }
   }
+  @keyframes rotateplane {
+    0% { transform: perspective(120px) }
+    20% { transform: perspective(120px) rotateY(180deg) }
+    40% { transform: perspective(120px) rotateY(180deg) rotateX(180deg) }
+    60% { transform: perspective(120px) rotateY(0deg)  rotateX(180deg) }
+    80% { transform: perspective(120px) }
+    90% {transform:  scale(0.01) }
+    100% {transform:  scale(1) }
+  }
   
     #main {
       width: 370px ;
