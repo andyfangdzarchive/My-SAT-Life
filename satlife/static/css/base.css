@@ -35,9 +35,11 @@ ol li:before {
 }
 
 #buttons {
-
+  margin:auto;
 }
-
+#main {
+  margin-bottom: 70px;
+}
 #operations {
   position: fixed;
   bottom:0px;
