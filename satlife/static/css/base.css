@@ -1,0 +1,81 @@
+#question{
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+.button{
+  font-weight:bold;
+}
+ol {
+  counter-reset: my-badass-counter;
+  padding: 0;
+  
+}
+ol li:before {
+
+  content:"(" counter(my-badass-counter, upper-alpha) ")";
+  counter-increment: my-badass-counter;
+  margin-right: 8px;
+}
+.prep{
+  display:none;
+}
+.display-label{
+  display: inline-block;
+  width: 30px;
+  padding-left: 5px;
+}
+
+#buttons {
+  
+}
+.cbstyle {
+  
+  width: 350px; /* change to your preferences */
+  word-wrap: break-word;
+
+}
+.cbchoice{
+  margin-left: 2em; text-indent: -2em;
+  word-wrap: break-word;
+  overflow: hidden
+}
+.display-field{
+  display: inline-block;
+  padding-left: 10px;
+  text-indent: -10px;
+  vertical-align: top;
+  width: 300px; /* for testing purposes only */
+}
+
+.spinner {
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: rotateplane 2s  ease-in-out;
+  animation: rotateplane 2s  ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  20% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  40% { -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg) }
+  60% { -webkit-transform: perspective(120px) rotateY(0deg)  rotateX(180deg) }
+  80% { -webkit-transform: perspective(120px) }
+  90% {-webkit-transform:  scale(0.01) }
+  100% {-webkit-transform:  scale(1) }
+}
+@keyframes rotateplane {
+  0% { transform: perspective(120px) }
+  20% { transform: perspective(120px) rotateY(180deg) }
+  40% { transform: perspective(120px) rotateY(180deg) rotateX(180deg) }
+  60% { transform: perspective(120px) rotateY(0deg)  rotateX(180deg) }
+  80% { transform: perspective(120px) }
+  90% {transform:  scale(0.01) }
+  100% {transform:  scale(1) }
+}
+
+#main {
+  width: 370px ;
+  margin-left: auto ;
+  margin-right: auto ;
+  
+}
