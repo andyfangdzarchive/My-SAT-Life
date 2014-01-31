@@ -118,7 +118,7 @@ function viewQuestion(id)
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
         window.history.pushState("object or string", document.title, "/grammar/view/"+id);
         document.title = json['nickname']+" - Grammar";
-      },500);
+      },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
       },1000);
@@ -144,7 +144,7 @@ function viewList()
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
         window.history.pushState("object or string", document.title, "/grammar/");
         document.title = "List"+" - Grammar";
-      },500);
+      },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
       },1000);

@@ -37,6 +37,12 @@ ol li:before {
 #buttons {
 
 }
+
+#operations {
+  position: fixed;
+  bottom:0px;
+  background-color: white;
+}
 .cbstyle {
 
   width: 350px; /* change to your preferences */
