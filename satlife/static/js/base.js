@@ -1,3 +1,4 @@
+
 function choose(choice,id) {
   console.log(id);
   var tgt=$('#'+id);
@@ -14,7 +15,7 @@ function choose(choice,id) {
     }, 2000);
   });
 }
-
+var nextId;
 function setSiteCookie(cname,cvalue,exdays)
 {
   var d = new Date();
@@ -67,12 +68,9 @@ function renderQuestion(json)
   str+='</div>\n';//!question
   return str;
 }
-function renderHit(nextId)
+function Hit()
 {
-  var str='<a href="javascript:" class="button border-fade"'
-  str+='onClick="viewQuestion('+nextId+',false)"';
-  str+='><i class="fa fa-fighter-jet"></i> Hit me!</a>';
-  return str;
+  viewQuestion(nextId,false);
 }
 function renderList(json)
 {
@@ -82,9 +80,9 @@ function renderList(json)
   for(var i=0;i<json['count'];i++)
   {
     console.log(i);
-    str+="<p class='button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p>\n';
+    str+="<p "+'data-scrollreveal="enter left after 0.5s"'+" class='button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p>';
   }
-  str+='</div>\n';
+  str+='</div>\n<script src="/static/js/scrollReveal.js"></script>\n';
   return str;
 }
 function rendertoList(nextId)
@@ -104,13 +102,17 @@ function renderPrevious(thisId)
 }
 function viewQuestion(id,isHistoryAccess)
 {
+  NProgress.configure({ showSpinner: false });
+  NProgress.start();
   var jqxhr = $.getJSON( "/grammar/ajax/"+id, function() {
   console.log( "Successfully registered ajax event. Loading question "+id+"." );
   })
     .done(function(json) {
+      
       var htmldata=renderQuestion(json);
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
+      nextId=json['next'];
       $("html, body").animate({ scrollTop: 0 }, "slow");
       setTimeout(function() {
         $('#main').empty();
@@ -120,18 +122,18 @@ function viewQuestion(id,isHistoryAccess)
         var state = {type:'Question',pk:id,now:document.URL}
         document.title = json['nickname']+" - Grammar";
         if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/view/"+id);
+        NProgress.set(0.4);
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
+        NProgress.done();
       },1000);
-      $('#operations').empty();
-      $('#operations').append(renderHit(json['next']));
-      $('#operations').append(renderPrevious(id));
-      $('#operations').append(rendertoList(json['next']));
     });
 }
 function viewList(isHistoryAccess)
 {
+  NProgress.configure({ showSpinner: false });
+  NProgress.start();
   var jqxhr = $.getJSON( "/grammar/listajax/", function() {
   console.log( "Successfully registered ajax event. Loading list." );
   })
@@ -139,6 +141,7 @@ function viewList(isHistoryAccess)
       var htmldata=renderList(json);
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
+      nextId=json['shuffle'];
       $("html, body").animate({ scrollTop: 0 }, "slow");
       setTimeout(function() {
         $('#main').empty();
@@ -148,14 +151,16 @@ function viewList(isHistoryAccess)
         var state = {type:'List'}
         document.title = "List"+" - Grammar";
         if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/");
+        NProgress.set(0.4);
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
+        NProgress.done();
       },1000);
-      $('#operations').empty();
     });
 }
 window.onpopstate = function(event) {
+  if(event.state==null)return;
   if(event.state['type']=='List')viewList(true);
   if(event.state['type']=='Question')viewQuestion(event.state['pk'],true);
 };

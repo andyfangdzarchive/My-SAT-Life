@@ -7,6 +7,10 @@ html, body {
   font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 }
 
+.hidden {
+  margin-top:-1px;
+  margin-bottom: -1px;
+}
 .button{
   font-weight:bold;
 }
@@ -40,7 +44,15 @@ ol li:before {
 #main {
   margin-bottom: 70px;
 }
+::-webkit-scrollbar{width:9px;height:9px;}
+::-webkit-scrollbar-button:start:decrement,#doc ::-webkit-scrollbar-button:end:increment{display:block;height:0;background-color:transparent;}
+::-webkit-scrollbar-track-piece{background-color:#FAFAFA;-webkit-border-radius:0;-webkit-border-bottom-right-radius:8px;-webkit-border-bottom-left-radius:8px;}
+::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#999;-webkit-border-radius:8px;}
+::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#999;-webkit-border-radius:8px;}
+
 #operations {
+
+  min-width: 370px;
   position: fixed;
   bottom:0px;
   background-color: white;

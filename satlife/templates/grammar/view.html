@@ -6,10 +6,12 @@
 <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "css/hover.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/nprogress.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "css/colors.css" %}">
 
 <script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
 <script src="{% static "js/base.js" %}"></script>
+<script src="{% static "js/nprogress.js" %}"></script>
 <script>
   $(document).ready( function(){ 
     viewQuestion({{ id }})
@@ -20,7 +22,6 @@
 <div id="backbone">
 <div id="main">
 </div>
-<div id="operations">
-</div>
+<div id="operations"><a class="button border-fade easy " onclick="Hit();"><i class="fa fa-fighter-jet"> Hit me!</i> </a><a class="button border-fade easy " onclick="window.history.go(-1);"><i class="fa fa-undo"> </i></a><a class="button border-fade easy " onclick="window.history.go(1);"><i class="fa fa-repeat"></i></a><a class="button border-fade easy " onclick="viewList(false);"><i class="fa fa-list"> List</i> </a></div>
 </div>
 </body>
