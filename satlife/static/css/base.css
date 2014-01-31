@@ -1,23 +1,33 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 #question{
   font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 }
+
 .button{
   font-weight:bold;
 }
+
 ol {
   counter-reset: my-badass-counter;
   padding: 0;
   
 }
+
 ol li:before {
 
   content:"(" counter(my-badass-counter, upper-alpha) ")";
   counter-increment: my-badass-counter;
   margin-right: 8px;
 }
+
 .prep{
   display:none;
 }
+
 .display-label{
   display: inline-block;
   width: 30px;
@@ -25,10 +35,10 @@ ol li:before {
 }
 
 #buttons {
-  
+
 }
 .cbstyle {
-  
+
   width: 350px; /* change to your preferences */
   word-wrap: break-word;
 
@@ -49,11 +59,18 @@ ol li:before {
 .spinner {
   background-color: #333;
 
-  margin: 100px auto;
-  -webkit-animation: rotateplane 2s  ease-in-out;
-  animation: rotateplane 2s  ease-in-out;
+  margin:  auto;
+  -webkit-animation: rotateplane 2s infinite ease-in-out;
+  animation: rotateplane 2s infinite ease-in-out;
 }
-
+.switch_in_out {
+  -webkit-animation: switchinout 1s infinite ease-in-out;
+  animation: switchinout 1s infinite ease-in-out;
+}
+.switch_out {
+  -webkit-animation: switchout 1s ease-in-out;
+  animation: switchout 1s ease-in-out;
+}
 @-webkit-keyframes rotateplane {
   0% { -webkit-transform: perspective(120px) }
   20% { -webkit-transform: perspective(120px) rotateY(180deg) }
@@ -72,10 +89,38 @@ ol li:before {
   90% {transform:  scale(0.01) }
   100% {transform:  scale(1) }
 }
-
-#main {
+@-webkit-keyframes switchinout {
+  0% {-webkit-transform: scale(1)}
+  50% {-webkit-transform: scale(0.01)}
+  100% {-webkit-transform: scale(1)}
+}
+@keyframes switchinout {
+  0% {transform: perspective(120px) scale(1)}
+  50% {transform: scale(0.01)}
+  100% {transform: scale(1)}
+}
+@-webkit-keyframes switchout {
+  0% {-webkit-transform: scale(1);}
+  100% {-webkit-transform: scale(0.01);}
+}
+@keyframes switchout {
+  0% {transform: scale(1);}
+  100% {transform: scale(0.01);}
+}
+#backbone {
   width: 370px ;
   margin-left: auto ;
   margin-right: auto ;
-  
+}
+.bigdeal
+{
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size:200%;
+}
+.easy
+{
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+#question {
+  min-height: 500px;
 }

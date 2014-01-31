@@ -13,7 +13,7 @@
   <h2 style='font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;'> Here's a list of all grammar questions avaliable:</h2>
     {% for grammar in grammar_list %}
 
-        <a style='font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;' href="/grammar/{{ grammar.id }}/" class="button border-fade"><i class="fa fa-stack-exchange"></i> {{ grammar.nick }}</a>
+        <a style='font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;' href="/grammar/view/{{ grammar.id }}/" class="button border-fade"><i class="fa fa-stack-exchange"></i> {{ grammar.nick }}</a>
         <br/>
     {% endfor %}
 {% else %}

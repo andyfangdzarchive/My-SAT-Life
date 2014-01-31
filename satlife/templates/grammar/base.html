@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=370px, user-scalable=0" />
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/hover.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/colors.css" %}">
+
+<script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+<script src="{% static "js/base.js" %}"></script>
+<script>
+  $(document).ready( function(){ 
+    viewList()
+  });
+</script>
+</head>
+<body> 
+<div id="backbone">
+<div id="main">
+</div>
+<div id="operations" class="easy">
+</div>
+</div>
+</body>
