@@ -111,6 +111,7 @@ function viewQuestion(id,isHistoryAccess)
       var htmldata=renderQuestion(json);
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
       setTimeout(function() {
         $('#main').empty();
         $('#main').append(htmldata);
@@ -138,6 +139,7 @@ function viewList(isHistoryAccess)
       var htmldata=renderList(json);
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
       setTimeout(function() {
         $('#main').empty();
         $('#main').append(htmldata);
