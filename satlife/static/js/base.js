@@ -116,8 +116,9 @@ function viewQuestion(id)
         $('#main').append(htmldata);
         var currentHeight=$('#main').height();
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
-        window.history.pushState("object or string", document.title, "/grammar/view/"+id);
+        var state = {type:'Question',pk:id,now:document.URL}
         document.title = json['nickname']+" - Grammar";
+        window.history.pushState(state, document.title, "/grammar/view/"+id);
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
@@ -142,8 +143,9 @@ function viewList()
         $('#main').append(htmldata);
         var currentHeight=$('#main').height();
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
-        window.history.pushState("object or string", document.title, "/grammar/");
+        var state = {type:'List'}
         document.title = "List"+" - Grammar";
+        window.history.pushState(state, document.title, "/grammar/");
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
@@ -151,3 +153,7 @@ function viewList()
       $('#operations').empty();
     });
 }
+window.onpopstate = function(event) {
+  if(event.state['type']=='List')viewList();
+  if(event.state['type']=='Question')viewQuestion(event.state['pk']);
+};
