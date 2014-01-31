@@ -151,8 +151,11 @@ function viewList(isHistoryAccess)
         var state = {type:'List'}
         document.title = "List"+" - Grammar";
         if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/");
-        NProgress.set(0.4);
-      },300);
+        NProgress.set(0.3);
+      },250);
+      setTimeout(function() {
+        NProgress.set(0.7);
+      },400);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
         NProgress.done();
