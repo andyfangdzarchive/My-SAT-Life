@@ -102,7 +102,7 @@ function renderPrevious(thisId)
 }
 function viewQuestion(id,isHistoryAccess)
 {
-  NProgress.configure({ showSpinner: false });
+  //NProgress.configure({ showSpinner: false });
   NProgress.start();
   var jqxhr = $.getJSON( "/grammar/ajax/"+id, function() {
   console.log( "Successfully registered ajax event. Loading question "+id+"." );
@@ -132,7 +132,7 @@ function viewQuestion(id,isHistoryAccess)
 }
 function viewList(isHistoryAccess)
 {
-  NProgress.configure({ showSpinner: false });
+  //NProgress.configure({ showSpinner: false });
   NProgress.start();
   var jqxhr = $.getJSON( "/grammar/listajax/", function() {
   console.log( "Successfully registered ajax event. Loading list." );
