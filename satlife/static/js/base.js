@@ -70,7 +70,7 @@ function renderQuestion(json)
 function renderHit(nextId)
 {
   var str='<a href="javascript:" class="button border-fade"'
-  str+='onClick="viewQuestion('+nextId+')"';
+  str+='onClick="viewQuestion('+nextId+',false)"';
   str+='><i class="fa fa-fighter-jet"></i> Hit me!</a>';
   return str;
 }
@@ -82,7 +82,7 @@ function renderList(json)
   for(var i=0;i<json['count'];i++)
   {
     console.log(i);
-    str+="<p class='button easy' onClick='viewQuestion("+json['pks'][i]+")'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p>\n';
+    str+="<p class='button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p>\n';
   }
   str+='</div>\n';
   return str;
@@ -90,7 +90,7 @@ function renderList(json)
 function rendertoList(nextId)
 {
   var str='<a href="javascript:" class="button border-fade"'
-  str+='onClick="viewList()"';
+  str+='onClick="viewList(false)"';
   str+='><i class="fa fa-list"></i> List</a>';
   return str;
 }
@@ -99,10 +99,10 @@ function renderPrevious(thisId)
   var lastId;
   if(getCookie("last")=="")lastId=thisId;
   else lastId=getCookie("last");
-  var str='<a class="button border-fade " onClick="viewQuestion('+lastId+')"><i class="fa fa fa-reply"></i> Previous</a>';
+  var str='<a class="button border-fade " onClick="viewQuestion('+lastId+',false)"><i class="fa fa fa-reply"></i> Previous</a>';
   return str;
 }
-function viewQuestion(id)
+function viewQuestion(id,isHistoryAccess)
 {
   var jqxhr = $.getJSON( "/grammar/ajax/"+id, function() {
   console.log( "Successfully registered ajax event. Loading question "+id+"." );
@@ -118,7 +118,7 @@ function viewQuestion(id)
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
         var state = {type:'Question',pk:id,now:document.URL}
         document.title = json['nickname']+" - Grammar";
-        window.history.pushState(state, document.title, "/grammar/view/"+id);
+        if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/view/"+id);
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
@@ -129,7 +129,7 @@ function viewQuestion(id)
       $('#operations').append(rendertoList(json['next']));
     });
 }
-function viewList()
+function viewList(isHistoryAccess)
 {
   var jqxhr = $.getJSON( "/grammar/listajax/", function() {
   console.log( "Successfully registered ajax event. Loading list." );
@@ -145,7 +145,7 @@ function viewList()
         //$('#operations').animate({up:"+="+currentHeight-pastHeight},500);
         var state = {type:'List'}
         document.title = "List"+" - Grammar";
-        window.history.pushState(state, document.title, "/grammar/");
+        if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/");
       },350);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
@@ -154,6 +154,6 @@ function viewList()
     });
 }
 window.onpopstate = function(event) {
-  if(event.state['type']=='List')viewList();
-  if(event.state['type']=='Question')viewQuestion(event.state['pk']);
+  if(event.state['type']=='List')viewList(true);
+  if(event.state['type']=='Question')viewQuestion(event.state['pk'],true);
 };
