@@ -39,7 +39,7 @@ function getCookie(cname)
 function renderQuestion(json)
 {
   var str='<div id="question">\n';
-  str+='<div style="max-width:320px;border-style: solid;border-width: 2px; padding: 4px;">\nPlease click an alphabetically labeled button to see if you are correct. Click "Hit me!" to view another random question. Click "Previous" to view the last question you saw. Click "List" to return to the question list.\n</div>';
+  str+='<div style="max-width:320px;border-style: solid;border-width: 2px; padding: 4px;">\nPlease click an alphabetically labeled button to see if you are correct. Click "List" to return to the question list.\n</div>';
   str+='<h4>'+json['nickname']+'</h4>';
   str+='<p class="cbstyle">';
   str+=json['question_1st'];
@@ -142,7 +142,7 @@ function viewList(isHistoryAccess)
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
       nextId=json['shuffle'];
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      $("html, body").animate({ scrollTop: 0 }, "fast");
       setTimeout(function() {
         $('#main').empty();
         $('#main').append(htmldata);
