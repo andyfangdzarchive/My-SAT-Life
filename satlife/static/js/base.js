@@ -80,7 +80,7 @@ function renderList(json)
   for(var i=0;i<json['count'];i++)
   {
     console.log(i);
-    str+="<p "+'data-scrollreveal="enter left after 0.5s"'+" class='button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p>';
+    str+="<p "+'data-scrollreveal="enter left after 0.5s"'+" class='button border-fade list-button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p><br/>\n';
   }
   str+='</div>\n<script src="/static/js/scrollReveal.js"></script>\n';
   return str;
@@ -142,7 +142,7 @@ function viewList(isHistoryAccess)
       var pastHeight=$('#main').height();
       $('#main').addClass('switch_in_out');
       nextId=json['shuffle'];
-      $("html, body").animate({ scrollTop: 0 }, "fast");
+      
       setTimeout(function() {
         $('#main').empty();
         $('#main').append(htmldata);
@@ -158,7 +158,9 @@ function viewList(isHistoryAccess)
       },400);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
+        $('.list-button').addClass('slide_in'); 
         NProgress.done();
+        $("html, body").animate({ scrollTop: 0 }, "fast");
       },1000);
     });
 }

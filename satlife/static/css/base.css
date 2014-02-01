@@ -41,6 +41,11 @@ ol li:before {
 #buttons {
   margin:auto;
 }
+.list-button{
+  opacity: 0;
+  width: 340px;
+  display: block;
+}
 #main {
   margin-bottom: 70px;
 }
@@ -52,7 +57,7 @@ ol li:before {
 
 #operations {
   z-index: 100;
-  min-width: 370px;
+  min-width: 400px;
   position: fixed;
   bottom:0px;
   background-color: white;
@@ -91,6 +96,12 @@ ol li:before {
   -webkit-animation: switchout 1s ease-in-out;
   animation: switchout 1s ease-in-out;
 }
+.slide_in {
+  -webkit-animation: slidein 1s 1 ease-in-out;
+  animation: slidein 1s 1 ease-in-out;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
 @-webkit-keyframes rotateplane {
   0% { -webkit-transform: perspective(120px) }
   20% { -webkit-transform: perspective(120px) rotateY(180deg) }
@@ -127,6 +138,18 @@ ol li:before {
   0% {transform: scale(1);}
   100% {transform: scale(0.01);}
 }
+
+@-webkit-keyframes slidein {
+  0%   { opacity:0; -webkit-transform:translate(-30px) }
+  100% { opacity:1; -webkit-transform:translate(0px)}
+}
+
+
+@keyframes slidein {
+  0%   { opacity:0; transform:translate(-30px) }
+  100% { opacity:1; transform:translate(0px)}
+}
+
 #backbone {
   width: 370px ;
   margin-left: auto ;
