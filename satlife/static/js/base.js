@@ -80,7 +80,7 @@ function renderList(json)
   for(var i=0;i<json['count'];i++)
   {
     console.log(i);
-    str+="<p "+'data-scrollreveal="enter left after 0.5s"'+" class='button border-fade list-button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p><br/>\n';
+    str+="<p class='button border-fade list-button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p><br/>\n';
   }
   str+='</div>\n';
   return str;
