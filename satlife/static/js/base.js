@@ -1,19 +1,19 @@
-
 function choose(choice,id) {
   console.log(id);
   var tgt=$('#'+id);
+  var result;
   $.getJSON("/grammar/choose/"+choice, function(json){
-    var result=json['answer'];
+    result=json['answer'];
     console.log(result);
-    tgt.addClass("spinner");
-    setTimeout(function() {
+  });
+  tgt.addClass("spinner");
+  setTimeout(function() {
       if(result)tgt.addClass('bg-green');
       else tgt.addClass('bg-red');
     }, 1800);
-    setTimeout(function() {
+  setTimeout(function() {
       tgt.removeClass('spinner');
     }, 2000);
-  });
 }
 var nextId;
 function setSiteCookie(cname,cvalue,exdays)
@@ -82,7 +82,7 @@ function renderList(json)
     console.log(i);
     str+="<p "+'data-scrollreveal="enter left after 0.5s"'+" class='button border-fade list-button easy' onClick='viewQuestion("+json['pks'][i]+",false)'>"+ '<i class="fa fa-tasks"></i> '+json['nicks'][i]+'</p><br/>\n';
   }
-  str+='</div>\n<script src="/static/js/scrollReveal.js"></script>\n';
+  str+='</div>\n';
   return str;
 }
 function rendertoList(nextId)
