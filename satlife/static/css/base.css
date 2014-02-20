@@ -171,3 +171,7 @@ ol li:before {
 #question {
   min-height: 500px;
 }
+
+.nocolor {
+ background: #e1e1e1;
+}
