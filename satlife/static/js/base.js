@@ -5,7 +5,7 @@ function choose(choice,id) {
   $.getJSON("/grammar/choose/"+choice, function(json){
     result=json['answer'];
     console.log(result);
-  });
+  }).fail(function(){alert("Network Error")});
   tgt.addClass("spinner");
   setTimeout(function() {
       if(result)tgt.addClass('bg-green');
