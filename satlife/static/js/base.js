@@ -123,7 +123,7 @@ function viewQuestion(id,isHistoryAccess)
         document.title = json['nickname']+" - Grammar";
         if(!isHistoryAccess)window.history.pushState(state, document.title, "/grammar/view/"+id);
         NProgress.set(0.4);
-      },350);
+      },500);
       setTimeout(function() {
         $('#main').removeClass('switch_in_out');
         NProgress.done();
