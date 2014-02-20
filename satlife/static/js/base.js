@@ -5,11 +5,12 @@ function choose(choice,id) {
   $.getJSON("/grammar/choose/"+choice, function(json){
     result=json['answer'];
     console.log(result);
+     if(result)tgt.addClass('bg-green').addClass('nocolor');
+      else tgt.addClass('bg-red').addClass('nocolor';
   }).fail(function(){alert("Network Error")});
   tgt.addClass("spinner");
   setTimeout(function() {
-      if(result)tgt.addClass('bg-green');
-      else tgt.addClass('bg-red');
+     tgt.removeClass('nocolor'
     }, 1800);
   setTimeout(function() {
       tgt.removeClass('spinner');
