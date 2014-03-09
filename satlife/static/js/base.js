@@ -1,4 +1,4 @@
-function choose(choice,id) {
+function choose(choice,id){
   console.log(id);
   var tgt=$('#'+id);
   var result;
@@ -6,11 +6,11 @@ function choose(choice,id) {
     result=json['answer'];
     console.log(result);
      if(result)tgt.addClass('bg-green').addClass('nocolor');
-      else tgt.addClass('bg-red').addClass('nocolor';
+      else tgt.addClass('bg-red').addClass('nocolor');
   }).fail(function(){alert("Network Error")});
   tgt.addClass("spinner");
   setTimeout(function() {
-     tgt.removeClass('nocolor'
+     tgt.removeClass('nocolor')
     }, 1800);
   setTimeout(function() {
       tgt.removeClass('spinner');
@@ -40,7 +40,7 @@ function getCookie(cname)
 function renderQuestion(json)
 {
   var str='<div id="question">\n';
-  str+='<div style="max-width:320px;border-style: solid;border-width: 2px; padding: 4px;">\nPlease click an alphabetically labeled button to see if you are correct. Click "List" to return to the question list.\n</div>';
+  str+='<div style="max-width:290px;border-style: solid;border-width: 2px; padding: 4px;">\nPlease click an alphabetically labeled button to see if you are correct. Click "List" to return to the question list.\n</div>';
   str+='<h4>'+json['nickname']+'</h4>';
   str+='<p class="cbstyle">';
   str+=json['question_1st'];

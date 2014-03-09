@@ -43,7 +43,8 @@ ol li:before {
 }
 .list-button{
   opacity: 0;
-  width: 340px;
+  font-size:10pt;
+  width: 300px;
   display: block;
 }
 #main {
@@ -57,7 +58,7 @@ ol li:before {
 
 #operations {
   z-index: 100;
-  min-width: 370px;
+  min-width: 320px;
   position: fixed;
   bottom:0px;
   border: 5px transparent solid ;
@@ -68,7 +69,7 @@ ol li:before {
 }
 .cbstyle {
 
-  width: 350px; /* change to your preferences */
+  width: 300px; /* change to your preferences */
   word-wrap: break-word;
 
 }
@@ -82,7 +83,7 @@ ol li:before {
   padding-left: 10px;
   text-indent: -10px;
   vertical-align: top;
-  width: 300px; /* for testing purposes only */
+  width: 270px; /* for testing purposes only */
 }
 
 .spinner {
@@ -174,4 +175,10 @@ ol li:before {
 
 .nocolor {
  background: #e1e1e1;
+}
+i {
+    font-size:10pt;
+}
+p {
+    font-size:12pt;
 }
