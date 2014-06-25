@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Application definition
 
 INSTALLED_APPS = (
@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taggit',
     'grammar',
 )
 

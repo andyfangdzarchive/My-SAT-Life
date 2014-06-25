@@ -10,12 +10,12 @@ class ChoiceInline(admin.StackedInline):
 class GrammarAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['nick','pub_date']}),
-        ('Question ', {'fields': ['question_1st','question_2nd','tags']}),
+        ('Question ', {'fields': ['question_1st','question_2nd']}),
     ]
     inlines = [ChoiceInline]
-    list_filter = ['tags']
+
     list_display = ('nick','question_1st','question_2nd')
-    search_fields = ['nick','question_1st','question_2nd','tags']
+    search_fields = ['nick','question_1st','question_2nd']
 
 admin.site.register(Grammar,GrammarAdmin)
 admin.site.register(Choice)

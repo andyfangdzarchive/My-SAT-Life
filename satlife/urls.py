@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'satlife.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^grammar/', include('grammar.urls')),
+    url(r'^dict/', include('dict.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
