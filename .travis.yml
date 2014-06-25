@@ -1,0 +1,12 @@
+language: python
+python: "2.7"
+# command to install dependencies
+install:
+  - "pip install -r requirements.txt"
+# command to run tests
+script: nosetests
+deploy:
+  provider: heroku
+  api_key: "ada90f99-2ce2-49fe-9b32-74c32541eeb1"
+  app: "satlife"
+
